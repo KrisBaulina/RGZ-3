@@ -1,4 +1,4 @@
-<html>
+﻿<html>
 	<head>
 		<title>РГЗ 3</title>
 	</head>
@@ -21,39 +21,26 @@
 			<input type="submit" value="Узнать">
 		</form>
 		<?php
+		
 		if (isset($myDate)){
 			$month=$myDate -> format('m');
 			$year=$myDate -> format('Y');				
 			$myDate->setDate((int)$year,(int)$month,1);
 			$dayOfWeek=$myDate->format('D');
-		};
-		$i=1;
-		while ($dayOfWeek !=='Sat' || $dayOfWeek !=='Sun'){
-			$myDate->setDate((int)$year,(int)$month-$i,1);
-			$i++;
-			$dayOfWeek=$myDate->format('D');
-		}
-		
-			/* if (isset($myDate)){
-				$month=$myDate -> format('m');
-				$year=$myDate -> format('Y');				
-				$myDate->setDate((int)$year,(int)$month,1);
-				a:
+			echo $dayOfWeek;
+			$i=1;
+			while ($dayOfWeek !== 'Sat' || $dayOfWeek !== 'Sun'){
+				$myDate->setDate((int)$year,(int)$month-$i,1);
+				$i++;
 				$dayOfWeek=$myDate->format('D');
-				if ($dayOfWeek=='Sat' || $dayOfWeek=='Sun'){
-					$Date= $myDate->format('d.m.Y');
-						if ($dayOfWeek=='Sat'){
-							echo "Последний раз первое число выпало на выходной ". $Date . ", это была " . $daysOfWeek[$dayOfWeek];
-						}
-						else {
-							echo "Последний раз первое число выпало на выходной ". $Date . ", это было " . $daysOfWeek[$dayOfWeek];
-						}										
+			};
+			if ($dayOfWeek=='Sat'){
+					echo "Последний раз первое число выпало на выходной ". $myDate . ", это была " . $daysOfWeek[$dayOfWeek];
 				}
 				else {
-					$myDate->setDate((int)$year,(int)$month-1,1);
-					goto a;							
-					}
-			}	 */
+					echo "Последний раз первое число выпало на выходной ". $myDate . ", это было " . $daysOfWeek[$dayOfWeek];
+				}	
+		}			
 		?>	
 	</body>
 </html>
